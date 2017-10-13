@@ -15,19 +15,20 @@ public class addTwoNumbers {
     public static void main(String[] args) {
         ListNode l1=new ListNode(2);
         l1.next=new ListNode(4);
-        l1.next.next=new ListNode(3);
-        l1.next.next.next=null;
+        l1.next.next=new ListNode(5);
+     //   l1.next.next.next=null;
 
         ListNode l2=new ListNode(5);
         l2.next=new ListNode(6);
         l2.next.next=new ListNode(4);
-        l2.next.next.next=null;
+     //   l2.next.next.next=null;
 
         ListNode p=l1;
         ListNode q=l2;
-        ListNode index;
-        ListNode result;
+        ListNode index=new ListNode(0);
 
+        ListNode result=index;
+        int len=0;
         int len1=0;
         int len2=0;//链表长度
 
@@ -52,7 +53,12 @@ public class addTwoNumbers {
 
         boolean carry=false;//是否进位标志
         while(p!=null&&q!=null){
-            index = new ListNode(p.val + q.val);
+            if (len==0){
+                index.val=p.val+q.val;
+            }else{
+                index=new ListNode(p.val + q.val);
+            }
+
            if (carry)
                index.val++;
            if (index.val>=10){
@@ -61,27 +67,32 @@ public class addTwoNumbers {
            }else{
                carry=false;
            }
-
-          index=index.next;
+           index=index.next;
            p=p.next;
            q=q.next;
-
+           len++;
         }
 
-        while(p!=null&&q==null){
-              index=new ListNode(p.val);
-              if (carry)
-              {
-                  index.val++;
-                  carry=false;
-              }
-
+        while (p!=null&&q==null){
+                index=new ListNode(p.val);
+                if (carry)
+                {
+                index.val++;
+                }
+                if (index.val>=10){
+                    index.val-=10;
+                    carry=true;
+                }else {
+                    carry=false;
+                }
+                p=p.next;
+                index=index.next;
         }
         if (carry)
-            index.next=new ListNode(1);
+            index=new ListNode(1);
 
 
-        System.out.println(result.val);
+        System.out.println(result.next.val);
 
 
 
