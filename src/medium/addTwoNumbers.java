@@ -28,19 +28,38 @@ public class addTwoNumbers {
 
 
 
-        LinkedList<Object> list1=new LinkedList<>();
-        LinkedList<Object> list2=new LinkedList<>();
+        LinkedList<Integer> list1=new LinkedList<>();
+        LinkedList<Integer> list2=new LinkedList<>();
+        LinkedList<Integer> temp=new LinkedList<>();
         while(l1!=null){
             list1.add(l1.val);
         }
         while (l2!=null){
             list2.add(l2.val);
         }
-        if (list1.size()>=list2.size()){
-            for (int i=0;i<list2.size();i++){
-
-            }
+        if (list1.size()<list2.size()){
+            temp.addAll(list1);
+            list1.clear();
+            list1.addAll(list2);
+            list2.clear();
+            list2.addAll(temp);
         }
+
+            for (int i=0;i<list2.size();i++){
+                    list1.set(i,list1.get(i)+list2.get(i));
+            }
+            for (int j=0;j<list1.size()-1;j++){//最后一位单独处理
+                if (list1.get(j)>=10){
+                    list1.set(j,list1.get(j)-10);
+                    list1.set(j+1,list1.get(j+1)+1);
+                }
+            }
+            if (list1.get(list1.size()-1)>=10){
+                list1.set(list1.size()-1,0);
+                list1.add(0);
+            }//处理最后一位
+        System.out.println(list1.size());
+
 //
 //        ListNode p=l1;
 //        ListNode q=l2;
