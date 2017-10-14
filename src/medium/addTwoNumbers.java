@@ -9,7 +9,9 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 *
 * */
+//新思路，用Java的linkedlist来解决
 
+//旧思路，现在卡在Java的引用上了
 public class addTwoNumbers {
 
     public static void main(String[] args) {
