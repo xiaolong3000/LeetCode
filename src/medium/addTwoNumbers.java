@@ -11,6 +11,8 @@ Output: 7 -> 0 -> 8
 * */
 //新思路，用Java的linkedlist来解决
 
+import java.util.LinkedList;
+
 //旧思路，现在卡在Java的引用上了
 public class addTwoNumbers {
 
@@ -18,83 +20,99 @@ public class addTwoNumbers {
         ListNode l1=new ListNode(2);
         l1.next=new ListNode(4);
         l1.next.next=new ListNode(5);
-     //   l1.next.next.next=null;
+
 
         ListNode l2=new ListNode(5);
         l2.next=new ListNode(6);
         l2.next.next=new ListNode(4);
-     //   l2.next.next.next=null;
 
-        ListNode p=l1;
-        ListNode q=l2;
-        ListNode index=new ListNode(0);
 
-        ListNode result=index;
-        int len=0;
-        int len1=0;
-        int len2=0;//链表长度
 
-        while(p!=null){
-          len1++;
-          p=p.next;
+        LinkedList<Object> list1=new LinkedList<>();
+        LinkedList<Object> list2=new LinkedList<>();
+        while(l1!=null){
+            list1.add(l1.val);
         }
-        while(q!=null){
-            len2++;
-            q=q.next;
+        while (l2!=null){
+            list2.add(l2.val);
         }
+        if (list1.size()>=list2.size()){
+            for (int i=0;i<list2.size();i++){
 
-        if (len1>=len2){
-            p=l1;
-            q=l2;
-
-        }else{
-            p=l2;
-            q=l1;
-
-        }//p大q小
-
-        boolean carry=false;//是否进位标志
-        while(p!=null&&q!=null){
-            if (len==0){
-                index.val=p.val+q.val;
-            }else{
-                index=new ListNode(p.val + q.val);
             }
-
-           if (carry)
-               index.val++;
-           if (index.val>=10){
-               index.val-=10;
-               carry=true;
-           }else{
-               carry=false;
-           }
-           index=index.next;
-           p=p.next;
-           q=q.next;
-           len++;
         }
+//
+//        ListNode p=l1;
+//        ListNode q=l2;
+//        ListNode index=new ListNode(0);
+//
+//        ListNode result=index;
+//
+//        int len=0;
+//        int len1=0;
+//        int len2=0;//链表长度
+//
+//        while(p!=null){
+//          len1++;
+//          p=p.next;
+//        }
+//        while(q!=null){
+//            len2++;
+//            q=q.next;
+//        }
+//
+//        if (len1>=len2){
+//            p=l1;
+//            q=l2;
+//
+//        }else{
+//            p=l2;
+//            q=l1;
+//
+//        }//p大q小
+//
+//        boolean carry=false;//是否进位标志
+//        while(p!=null&&q!=null){
+//            if (len==0){
+//                index.val=p.val+q.val;
+//            }else{
+//                index=new ListNode(p.val + q.val);
+//            }
+//
+//           if (carry)
+//               index.val++;
+//           if (index.val>=10){
+//               index.val-=10;
+//               carry=true;
+//           }else{
+//               carry=false;
+//           }
+//           index=index.next;
+//           p=p.next;
+//           q=q.next;
+//           len++;
+//        }
+//
+//        while (p!=null&&q==null){
+//                index=new ListNode(p.val);
+//                if (carry)
+//                {
+//                index.val++;
+//                }
+//                if (index.val>=10){
+//                    index.val-=10;
+//                    carry=true;
+//                }else {
+//                    carry=false;
+//                }
+//                p=p.next;
+//                index=index.next;
+//        }
+//        if (carry)
+//            index=new ListNode(1);
 
-        while (p!=null&&q==null){
-                index=new ListNode(p.val);
-                if (carry)
-                {
-                index.val++;
-                }
-                if (index.val>=10){
-                    index.val-=10;
-                    carry=true;
-                }else {
-                    carry=false;
-                }
-                p=p.next;
-                index=index.next;
-        }
-        if (carry)
-            index=new ListNode(1);
 
-
-        System.out.println(result.next.val);
+//        System.out.println(result.next);
 
 
 
