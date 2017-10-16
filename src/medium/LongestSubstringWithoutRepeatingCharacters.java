@@ -19,25 +19,29 @@ import java.util.List;
 public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         String s="abcabcbb";
-       char[] r=s.toCharArray();//这种方法超级慢
+       char[] r=s.toCharArray();
        int max=0;
-        List<Character> list=new ArrayList<>();
-       for (char c:r){
 
-          if (!list.contains(c)){
-              list.add(c);
-          }else {
-              for (int i=0;i<list.size();i++){
-                         if (list.get(i).equals(c)){
-                             for (int j=i;j>=0;j--){
-                                 list.remove(j);
-                             }
-                         }
-              }
-              list.add(c);
+
+        List<Character> list=new ArrayList<>();
+        List<Character> list_remove=new ArrayList<>();
+        for (int i=0;i<r.length;i++){
+          if (list.contains(r[i])){
+              max=max>=list.size()?max:list.size();
+               for (int j=0;j<=i;j++){
+                   list_remove.add(r[i]);
+               }
+               list.removeAll(list_remove);
+              list_remove.clear();
           }
-           max=(max>list.size())?max:list.size();
-       }
+          list.add(r[i]);
+        }
+
+
+
         System.out.println(max);
+
+
+
     }
 }
