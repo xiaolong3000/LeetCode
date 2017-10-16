@@ -26,16 +26,21 @@ public class addTwoNumbers {
         l2.next=new ListNode(6);
         l2.next.next=new ListNode(4);
 
+//第三种方法，普通list
+//        List<Integer> list1=new ArrayList<>();
+//        List<Integer> list2=new ArrayList<>();
 
 
-        LinkedList<Integer> list1=new LinkedList<>();//java.lang.OutOfMemoryError: Java heap space
-        LinkedList<Integer> list2=new LinkedList<>();//这种方式不行
-        LinkedList<Integer> temp=new LinkedList<>();
+        LinkedList<Integer> list1=new LinkedList<>();
+        LinkedList<Integer> list2=new LinkedList<>();
+
         while(l1!=null){
             list1.add(l1.val);
+            l1=l1.next;//刚刚这里忘记了，怪不得报错
         }
         while (l2!=null){
             list2.add(l2.val);
+            l2=l2.next;
         }
 
 if(list1.size()>=list2.size()) {
@@ -48,7 +53,7 @@ if(list1.size()>=list2.size()) {
             list1.set(j + 1, list1.get(j + 1) + 1);
         }
     }
-    if (list1.get(list1.size() - 1) >= 10) {
+    if (list1.getLast() >= 10) {
         list1.set(list1.getLast(), 0);
         list1.add(0);
     }//处理最后一位
@@ -63,7 +68,7 @@ if (list1.size()<list2.size()){
                     list2.set(j+1,list2.get(j+1)+1);
                 }
             }
-            if (list2.get(list2.size()-1)>=10){
+            if (list2.getLast()>=10){
                 list2.set(list2.getLast(),0);
                 list2.add(0);
             }
@@ -74,9 +79,9 @@ if (list1.size()<list2.size()){
 //
 //        ListNode p=l1;
 //        ListNode q=l2;
-//        ListNode index=new ListNode(0);
+//        ListNode index;
 //
-//        ListNode result=index;
+//        ListNode result;
 //
 //        int len=0;
 //        int len1=0;
@@ -94,21 +99,17 @@ if (list1.size()<list2.size()){
 //        if (len1>=len2){
 //            p=l1;
 //            q=l2;
-//
+//            index=l1;
 //        }else{
 //            p=l2;
 //            q=l1;
-//
+//            index=l2;
 //        }//p大q小
-//
+//        result=index;
 //        boolean carry=false;//是否进位标志
 //        while(p!=null&&q!=null){
-//            if (len==0){
+//            if (len==0)
 //                index.val=p.val+q.val;
-//            }else{
-//                index=new ListNode(p.val + q.val);
-//            }
-//
 //           if (carry)
 //               index.val++;
 //           if (index.val>=10){
@@ -140,9 +141,9 @@ if (list1.size()<list2.size()){
 //        }
 //        if (carry)
 //            index=new ListNode(1);
-
-
-//        System.out.println(result.next);
+//
+//
+//    //    System.out.println(result.next);
 
 
 
