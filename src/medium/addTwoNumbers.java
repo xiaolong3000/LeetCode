@@ -14,7 +14,15 @@ Output: 7 -> 0 -> 8
 import java.util.LinkedList;
 
 //旧思路，现在卡在Java的引用上了
+//java的引用没有c++好用，所以还是用Java特有的方式解决比较好
 public class addTwoNumbers {
+    private ListNode change(LinkedList<Integer> list){
+        ListNode ln=new ListNode(list.getFirst());
+        for (int i=1;i<list.size();i++){
+
+        }
+        return ln;
+    }
 
     public static void main(String[] args) {
         ListNode l1=new ListNode(2);
@@ -26,10 +34,7 @@ public class addTwoNumbers {
         l2.next=new ListNode(6);
         l2.next.next=new ListNode(4);
 
-//第三种方法，普通list
-//        List<Integer> list1=new ArrayList<>();
-//        List<Integer> list2=new ArrayList<>();
-
+        ListNode result;
 
         LinkedList<Integer> list1=new LinkedList<>();
         LinkedList<Integer> list2=new LinkedList<>();
@@ -53,8 +58,9 @@ if(list1.size()>=list2.size()) {
             list1.set(j + 1, list1.get(j + 1) + 1);
         }
     }
+
     if (list1.getLast() >= 10) {
-        list1.set(list1.getLast(), 0);
+        list1.set(list1.size()-1, 0);
         list1.add(0);
     }//处理最后一位
 }
@@ -69,12 +75,20 @@ if (list1.size()<list2.size()){
                 }
             }
             if (list2.getLast()>=10){
-                list2.set(list2.getLast(),0);
+                list2.set(list2.size()-1,0);
                 list2.add(0);
             }
 
 }
-        System.out.println(list1.size());
+     if (list1.size()>=list2.size()){
+               result=new ListNode(list1.getFirst());
+
+     }else{
+
+     }
+
+
+
 
 //
 //        ListNode p=l1;
