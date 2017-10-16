@@ -28,8 +28,8 @@ public class addTwoNumbers {
 
 
 
-        LinkedList<Integer> list1=new LinkedList<>();
-        LinkedList<Integer> list2=new LinkedList<>();
+        LinkedList<Integer> list1=new LinkedList<>();//java.lang.OutOfMemoryError: Java heap space
+        LinkedList<Integer> list2=new LinkedList<>();//这种方式不行
         LinkedList<Integer> temp=new LinkedList<>();
         while(l1!=null){
             list1.add(l1.val);
@@ -37,27 +37,38 @@ public class addTwoNumbers {
         while (l2!=null){
             list2.add(l2.val);
         }
-        if (list1.size()<list2.size()){
-            temp.addAll(list1);
-            list1.clear();
-            list1.addAll(list2);
-            list2.clear();
-            list2.addAll(temp);
-        }
 
-            for (int i=0;i<list2.size();i++){
-                    list1.set(i,list1.get(i)+list2.get(i));
+if(list1.size()>=list2.size()) {
+    for (int i = 0; i < list2.size(); i++) {
+        list1.set(i, list1.get(i) + list2.get(i));
+    }
+    for (int j = 0; j < list1.size() - 1; j++) {//最后一位单独处理
+        if (list1.get(j) >= 10) {
+            list1.set(j, list1.get(j) - 10);
+            list1.set(j + 1, list1.get(j + 1) + 1);
+        }
+    }
+    if (list1.get(list1.size() - 1) >= 10) {
+        list1.set(list1.getLast(), 0);
+        list1.add(0);
+    }//处理最后一位
+}
+if (list1.size()<list2.size()){
+            for (int i=0;i<list1.size();i++){
+                list2.set(i,list2.get(i)+list1.get(i));
             }
-            for (int j=0;j<list1.size()-1;j++){//最后一位单独处理
-                if (list1.get(j)>=10){
-                    list1.set(j,list1.get(j)-10);
-                    list1.set(j+1,list1.get(j+1)+1);
+            for (int j=0;j<list2.size()-1;j++){
+                if (list2.get(j)>=10){
+                    list2.set(j,list2.get(j)-10);
+                    list2.set(j+1,list2.get(j+1)+1);
                 }
             }
-            if (list1.get(list1.size()-1)>=10){
-                list1.set(list1.size()-1,0);
-                list1.add(0);
-            }//处理最后一位
+            if (list2.get(list2.size()-1)>=10){
+                list2.set(list2.getLast(),0);
+                list2.add(0);
+            }
+
+}
         System.out.println(list1.size());
 
 //
