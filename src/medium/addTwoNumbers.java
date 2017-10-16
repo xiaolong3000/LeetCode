@@ -35,25 +35,26 @@ public class addTwoNumbers {
         l2.next=new ListNode(6);
         l2.next.next=new ListNode(4);
 
+    //    ListNode result=new ListNode(0);
 
-
-        ListNode dummyHead = new ListNode(0);
-        ListNode p = l1, q = l2, curr = dummyHead;
-        int carry = 0;
-        while (p != null || q != null) {
-            int x = (p != null) ? p.val : 0;
-            int y = (q != null) ? q.val : 0;
-            int sum = carry + x + y;
-            carry = sum / 10;
-            curr.next = new ListNode(sum % 10);
-            curr = curr.next;
-            if (p != null) p = p.next;
-            if (q != null) q = q.next;
-        }
-        if (carry > 0) {
-            curr.next = new ListNode(carry);
-        }
-        System.out.println(dummyHead.next.val);//这leetcold上的标准答案，我靠，为什么可以正常运行！
+//
+//        ListNode dummyHead = new ListNode(0);
+//        ListNode p = l1, q = l2, curr = dummyHead;
+//        int carry = 0;
+//        while (p != null || q != null) {
+//            int x = (p != null) ? p.val : 0;
+//            int y = (q != null) ? q.val : 0;
+//            int sum = carry + x + y;
+//            carry = sum / 10;
+//            curr.next = new ListNode(sum % 10);
+//            curr = curr.next;
+//            if (p != null) p = p.next;
+//            if (q != null) q = q.next;
+//        }
+//        if (carry > 0) {
+//            curr.next = new ListNode(carry);
+//        }
+//        System.out.println(dummyHead.next.next.val);//这leetcold上的标准答案，我靠，为什么可以正常运行！
 //
 //        LinkedList<Integer> list1=new LinkedList<>();
 //        LinkedList<Integer> list2=new LinkedList<>();
@@ -109,74 +110,35 @@ public class addTwoNumbers {
 //        System.out.println(result.next.next);
 
 
-//
-//        ListNode p=l1;
-//        ListNode q=l2;
-//        ListNode index;
-//
-//        ListNode result;
-//
-//        int len=0;
-//        int len1=0;
-//        int len2=0;//链表长度
-//
-//        while(p!=null){
-//          len1++;
-//          p=p.next;
-//        }
-//        while(q!=null){
-//            len2++;
-//            q=q.next;
-//        }
-//
-//        if (len1>=len2){
-//            p=l1;
-//            q=l2;
-//            index=l1;
-//        }else{
-//            p=l2;
-//            q=l1;
-//            index=l2;
-//        }//p大q小
-//        result=index;
-//        boolean carry=false;//是否进位标志
-//        while(p!=null&&q!=null){
-//            if (len==0)
-//                index.val=p.val+q.val;
-//           if (carry)
-//               index.val++;
-//           if (index.val>=10){
-//               index.val-=10;
-//               carry=true;
-//           }else{
-//               carry=false;
-//           }
-//           index=index.next;
-//           p=p.next;
-//           q=q.next;
-//           len++;
-//        }
-//
-//        while (p!=null&&q==null){
-//                index=new ListNode(p.val);
-//                if (carry)
-//                {
-//                index.val++;
-//                }
-//                if (index.val>=10){
-//                    index.val-=10;
-//                    carry=true;
-//                }else {
-//                    carry=false;
-//                }
-//                p=p.next;
-//                index=index.next;
-//        }
-//        if (carry)
-//            index=new ListNode(1);
-//
-//
-//    //    System.out.println(result.next);
+
+        ListNode p=l1;
+        ListNode q=l2;
+        ListNode index;
+
+        ListNode result=new ListNode(0);
+        index=result;//太厉害了，原来这样把动态和静态的联系起来
+
+
+
+       int carry=0;//是否进位标志
+        while(p!=null||q!=null){//学习答案得来的，厉害啊
+          int x= (p!=null)?p.val:0;
+          int y= (q!=null)?q.val:0;
+          int sum=x+y+carry;
+          index.next=new ListNode(sum%10);
+          carry=sum/10;
+          index=index.next;
+          if (p!=null)p=p.next;
+          if (q!=null)q=q.next;
+
+        }
+
+
+        if (carry>0)//处理最后一位大于9的情况
+            index=new ListNode(1);
+
+
+        System.out.println(result.next.val);
 
 
 
