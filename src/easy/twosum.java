@@ -23,7 +23,7 @@ public class twosum {
         int target=6;
         int[] result=new int[2];
         for (int i=0;i<nums.length;i++){
-              if (map.get(nums[i])==null){
+              if (!map.containsKey(nums[i])){
                   map.put(target-nums[i],i);
               }else{
                   result=new int[]{map.get(nums[i]),i};
