@@ -37,7 +37,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
             } else {
                 set.remove(s.charAt(left++));//这里是关键，left控制移动，当重复元素还在的时候把重复元素左边都删除了。而且根据string字符串的长度进行定位，不需要另外的计数来控制
             }
-            System.out.println(set.toString());
+
         }
 
 
