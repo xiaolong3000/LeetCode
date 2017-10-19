@@ -26,7 +26,7 @@ Output: "bb"
 //读题困难啊,似乎是上一题的变种，上一题只需要求出长度就行了，这一题需要输出那个最长的字符串
 public class LongestPalindromicSubstring {
     /*
-    * set的tostring源码：
+    * set的tostring源码：看着就蛋疼，还不如自己写一下
     *  public String  [More ...] toString() {
         Iterator<E> i = iterator();
         if (! i.hasNext())
@@ -42,7 +42,7 @@ public class LongestPalindromicSubstring {
         }
     }
 }
-    * 看着就蛋疼，还不如自己写一下
+    * 
     *
     * */
     public static String getstring(Set<Character> set){
