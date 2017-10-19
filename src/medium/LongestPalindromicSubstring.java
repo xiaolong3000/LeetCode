@@ -54,15 +54,9 @@ public class LongestPalindromicSubstring {
         return sb.toString();
     }
     public static void main(String[] args) {
-        String s="pwwkew";
+        String s="babad";
+//似乎理解错题目了，如果按照上一题的解法，不可能出现bab的
 
-
-        if ((null == s) || (s.length() == 0)) {
-            // return 0;
-        }
-        else if (s.length() == 1) {
-            //   return 1;
-        }
 
         Set<Character> set = new HashSet<>();
         int max = 0;
@@ -70,16 +64,21 @@ public class LongestPalindromicSubstring {
         int left = 0;
         String result="";
         while (index < s.length()) {
+            System.out.println(set.toString());
             if (set.add(s.charAt(index))) {
                // max = Math.max(max, ++index - left);
                 int now=++index-left;
-                if (max<=now){
+
+                if (max<now){
+                    max=now;
 
                     result=getstring(set);
-                    max=now;
+
+                    System.out.println(max);
                 }
             } else {
                 set.remove(s.charAt(left++));
+
             }
 
         }
